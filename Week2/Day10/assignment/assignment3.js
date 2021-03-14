@@ -33,10 +33,8 @@ console.log(data);
 let cleanData = [];
 
 function clean(data) {
-  for(let i = 0;i < data.length;i++){
-      cleanData = data.filter(d => d !== null);
-      return cleanData;
-  }
+  cleanData = data.filter(i => typeof i === 'number');
+  return cleanData;
 }
 
 console.log("\nClean Data : ");
@@ -60,4 +58,3 @@ if (process.argv.slice(2)[0] == "test") {
     console.error(err.message);
   }
 }
-  
