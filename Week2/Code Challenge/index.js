@@ -9,61 +9,54 @@ console.log("\nData: ");
 console.log(data);
 
 // Optional
-let cleanData = [];
 function clean(data) {
-  cleanData = data.filter(i => typeof i === 'number');
-  return cleanData;
+  return data.filter(i => typeof i === 'number');
 }
 
 console.log("\nClean Data: ")
-clean(data);
-console.log(cleanData);
+console.log(clean(data));
 
 // Should return array
-function sortAscending(cleanData) {
+function sortAscending(data) {
   // Code Here
-  //let swap = 0;
-  for(let i = 0;i < cleanData.length;i++){
-    for(let j = 0;j < cleanData.length;j++){
-      if(cleanData[j] > cleanData[j+1]){
-        let temp = cleanData[j];
-        cleanData[j] = cleanData[j+1];
-        cleanData[j+1] = temp;
-        //swap = 1;
+  data = clean(data);
+  for(let i = 0;i < data.length;i++){
+    let swap = false;
+    for(let j = 0;j < data.length-i-1;j++){
+      if(data[j] > data[j+1]){
+        let temp = data[j];
+        data[j] = data[j+1];
+        data[j+1] = temp;
+        swap = true;
       }
     }
-    /*if(swap == 0){
+    if(swap == false){
       break;
-    }*/
+    }
   }
-  return cleanData;
+  return data;
 }
-
-console.log("\nASC: ");
-console.log(sortAscending(cleanData));
 
 // Should return array
-function sortDecending(cleanData) {
+function sortDecending(data) {
   // Code Here
-  //let swap = 0;
-  for(let i = 0;i < cleanData.length;i++){
-    for(let j = 0;j < cleanData.length;j++){
-      if(cleanData[j] < cleanData[j+1]){
-        let temp = cleanData[j];
-        cleanData[j] = cleanData[j+1];
-        cleanData[j+1] = temp;
-        //swap = 1;
+  data = clean(data);
+  for(let i = 0;i < data.length;i++){
+    let swap = false;
+    for(let j = 0;j < data.length;j++){
+      if(data[j] < data[j+1]){
+        let temp = data[j];
+        data[j] = data[j+1];
+        data[j+1] = temp;
+        swap = true;
       }
     }
-    /*if(swap == 0){
+    if(swap == false){
       break;
-    }*/
+    }
   }
-  return cleanData;
+  return data;
 }
-
-console.log("\nDESC: ");
-console.log(sortDecending(cleanData));
 
 // DON'T CHANGE
 test(sortAscending, sortDecending, data);
